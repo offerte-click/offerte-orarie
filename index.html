@@ -5,40 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offerte Orarie — Le migliori offerte Amazon</title>
     <meta name="description" content="Le migliori offerte Amazon selezionate e verificate, aggiornate ogni ora.">
+    <meta property="og:title" content="Offerte Orarie — Le migliori offerte Amazon">
+    <meta property="og:description" content="Offerte Amazon verificate e aggiornate ogni ora con punteggio di qualità.">
+    <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #0f1117;
-            --surface: #1a1d27;
-            --surface-hover: #222632;
-            --border: #2a2e3a;
-            --text: #e4e6ed;
-            --text-dim: #8b8fa3;
-            --accent: #ff6b35;
-            --accent-hover: #ff8255;
-            --green: #22c55e;
-            --red: #ef4444;
-            --badge-bg: #1e3a2f;
-            --badge-text: #4ade80;
+            --bg: #f8f8fa;
+            --surface: #ffffff;
+            --border: #e5e7eb;
+            --border-hover: #d1d5db;
+            --text: #1a1a2e;
+            --text-secondary: #6b7280;
+            --text-dim: #9ca3af;
+            --accent: #ea580c;
+            --accent-hover: #dc4a04;
+            --accent-light: #fff7ed;
+            --green: #16a34a;
+            --green-light: #f0fdf4;
+            --red: #dc2626;
+            --red-light: #fef2f2;
+            --gold: #ca8a04;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Header */
         .header {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
-            padding: 1.2rem 1.5rem;
+            padding: 0 1.5rem;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 50;
         }
 
         .header-inner {
@@ -47,43 +55,116 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 56px;
         }
 
         .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
-            gap: .5rem;
+            gap: .4rem;
+            letter-spacing: -.02em;
         }
 
         .logo span { color: var(--accent); }
 
+        .header-right {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+        }
+
+        .header-stat {
+            font-size: .75rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .header-stat { display: block; }
+        }
+
         .tg-btn {
-            background: #2AABEE;
+            background: var(--accent);
             color: #fff;
             text-decoration: none;
-            padding: .5rem 1rem;
+            padding: .45rem .9rem;
             border-radius: 8px;
-            font-size: .85rem;
+            font-size: .8rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: .4rem;
-            transition: opacity .2s;
+            gap: .35rem;
+            transition: background .2s;
         }
 
-        .tg-btn:hover { opacity: .85; }
+        .tg-btn:hover { background: var(--accent-hover); }
 
-        /* Stats bar */
+        /* Toolbar */
+        .toolbar {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: .75rem 1rem;
+        }
+
+        .toolbar-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            align-items: center;
+        }
+
+        .filter-search {
+            flex: 1;
+            min-width: 160px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: .45rem .85rem;
+            border-radius: 20px;
+            font-size: .78rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        .filter-search:focus { border-color: var(--accent); }
+        .filter-search::placeholder { color: var(--text-dim); }
+
+        .sort-row {
+            display: flex;
+            gap: .3rem;
+            align-items: center;
+            margin-top: .5rem;
+        }
+
+        .sort-label { font-size: .72rem; color: var(--text-dim); margin-right: .2rem; }
+
+        .sort-btn {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: .2rem .45rem;
+            border-radius: 4px;
+            font-size: .72rem;
+            font-family: inherit;
+            transition: color .15s;
+        }
+
+        .sort-btn:hover { color: var(--text); }
+        .sort-btn.active { color: var(--accent); font-weight: 700; }
+
+        /* Stats */
         .stats-bar {
             max-width: 1000px;
-            margin: 1rem auto;
-            padding: 0 1rem;
+            margin: 0 auto;
+            padding: 0 1rem .5rem;
+            font-size: .78rem;
+            color: var(--text-secondary);
             display: flex;
-            gap: 1.5rem;
-            font-size: .85rem;
-            color: var(--text-dim);
+            gap: 1.2rem;
         }
 
         .stats-bar strong { color: var(--text); }
@@ -91,11 +172,11 @@
         /* Grid */
         .grid {
             max-width: 1000px;
-            margin: 1rem auto;
+            margin: 0 auto;
             padding: 0 1rem 3rem;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: .75rem;
         }
 
         /* Card */
@@ -104,76 +185,102 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
-            transition: border-color .2s, transform .15s;
+            transition: border-color .2s, box-shadow .2s;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
+            border-color: var(--border-hover);
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+        }
+
+        .card-img-wrap {
+            position: relative;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
         }
 
         .card-img {
             width: 100%;
-            aspect-ratio: 1;
+            aspect-ratio: 4/3;
             object-fit: contain;
-            background: #fff;
             padding: 1rem;
         }
 
-        .card-body { padding: 1rem; }
+        .card-badges {
+            position: absolute;
+            top: .5rem;
+            left: .5rem;
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+        }
+
+        .badge {
+            font-size: .65rem;
+            font-weight: 700;
+            padding: .15rem .45rem;
+            border-radius: 4px;
+        }
+
+        .badge-minimo { background: var(--red-light); color: var(--red); }
+        .badge-discount { background: var(--green-light); color: var(--green); }
+
+        .card-body { padding: .75rem .9rem; flex: 1; display: flex; flex-direction: column; }
 
         .card-title {
-            font-size: .9rem;
+            font-size: .85rem;
             font-weight: 600;
-            line-height: 1.35;
-            margin-bottom: .7rem;
+            line-height: 1.4;
+            margin-bottom: .5rem;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            flex: 1;
         }
 
         .card-prices {
             display: flex;
             align-items: baseline;
-            gap: .5rem;
-            margin-bottom: .5rem;
+            gap: .4rem;
+            flex-wrap: wrap;
         }
 
         .price-now {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            color: var(--accent);
+            color: var(--text);
         }
 
         .price-was {
-            font-size: .9rem;
+            font-size: .82rem;
             color: var(--text-dim);
             text-decoration: line-through;
-        }
-
-        .discount-badge {
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            font-size: .75rem;
-            font-weight: 700;
-            padding: .2rem .5rem;
-            border-radius: 4px;
         }
 
         .card-meta {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: .7rem;
+            margin-top: .5rem;
+            padding-top: .5rem;
+            border-top: 1px solid var(--border);
         }
 
-        .score {
-            font-size: .8rem;
-            color: var(--text-dim);
+        .score-pill {
+            font-size: .68rem;
+            font-weight: 700;
+            padding: .15rem .45rem;
+            border-radius: 10px;
+            background: var(--accent-light);
+            color: var(--accent);
         }
 
-        .score strong { color: var(--accent); }
+        .score-pill.high { background: var(--green-light); color: var(--green); }
+
+        .stars { color: var(--gold); font-size: .75rem; }
 
         .card-cta {
             display: block;
@@ -181,54 +288,71 @@
             background: var(--accent);
             color: #fff;
             text-decoration: none;
-            padding: .65rem;
+            padding: .6rem;
             font-weight: 700;
-            font-size: .85rem;
+            font-size: .82rem;
             transition: background .2s;
         }
 
         .card-cta:hover { background: var(--accent-hover); }
 
-        .badge-minimo {
-            background: #3b1a1a;
-            color: var(--red);
-            font-size: .7rem;
-            font-weight: 700;
-            padding: .15rem .4rem;
-            border-radius: 4px;
-            margin-bottom: .5rem;
-            display: inline-block;
+        /* Skeleton */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
-        .stars { color: #fbbf24; font-size: .8rem; }
+        .skeleton {
+            background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+            border-radius: 6px;
+        }
 
-        /* Loading & empty */
+        .skeleton-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .skeleton-card .skel-img { width: 100%; aspect-ratio: 4/3; }
+        .skeleton-card .skel-body { padding: .75rem .9rem; }
+        .skeleton-card .skel-line { height: 12px; margin-bottom: 8px; }
+        .skeleton-card .skel-line-short { width: 60%; }
+        .skeleton-card .skel-price { height: 20px; width: 40%; margin-top: 4px; }
+
         .status {
             text-align: center;
-            padding: 4rem 1rem;
-            color: var(--text-dim);
-            font-size: 1rem;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
         }
 
-        .status .spinner {
-            width: 32px;
-            height: 32px;
-            border: 3px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin .8s linear infinite;
-            margin: 0 auto 1rem;
+        .status-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+
+        .retry-btn {
+            margin-top: 1rem;
+            padding: .5rem 1.2rem;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: .82rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .retry-btn:hover { background: var(--accent-hover); }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding: 2rem 1rem;
             color: var(--text-dim);
-            font-size: .75rem;
+            font-size: .72rem;
             border-top: 1px solid var(--border);
+            background: var(--surface);
         }
 
         .footer a { color: var(--accent); text-decoration: none; }
@@ -237,6 +361,9 @@
             .grid { grid-template-columns: 1fr; }
             .header-inner { flex-wrap: wrap; gap: .5rem; }
         }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .fade-in { animation: fadeIn .3s ease-out; }
     </style>
 </head>
 <body>
@@ -244,30 +371,50 @@
 <header class="header">
     <div class="header-inner">
         <div class="logo">⏰ <span>Offerte Orarie</span></div>
-        <a class="tg-btn" href="https://t.me/offerte_orarie" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.53 8.1l-1.8 8.5c-.14.6-.5.75-.99.47l-2.76-2.04-1.33 1.28c-.15.15-.27.27-.56.27l.2-2.8 5.1-4.6c.22-.2-.05-.3-.34-.12l-6.3 3.97-2.72-.85c-.59-.18-.6-.59.12-.88l10.63-4.1c.49-.18.92.12.75.88z"/></svg>
-            Unisciti al canale
-        </a>
+        <div class="header-right">
+            <span class="header-stat" id="header-stat"></span>
+            <a class="tg-btn" href="https://t.me/offerte_orarie" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.53 8.1l-1.8 8.5c-.14.6-.5.75-.99.47l-2.76-2.04-1.33 1.28c-.15.15-.27.27-.56.27l.2-2.8 5.1-4.6c.22-.2-.05-.3-.34-.12l-6.3 3.97-2.72-.85c-.59-.18-.6-.59.12-.88l10.63-4.1c.49-.18.92.12.75.88z"/></svg>
+                Telegram
+            </a>
+        </div>
     </div>
 </header>
+
+<div class="toolbar">
+    <div class="toolbar-row">
+        <input class="filter-search" type="text" id="search" placeholder="Cerca offerte...">
+    </div>
+    <div class="sort-row">
+        <span class="sort-label">Ordina:</span>
+        <button class="sort-btn active" data-sort="score">Punteggio</button>
+        <button class="sort-btn" data-sort="discount">Sconto</button>
+        <button class="sort-btn" data-sort="price-asc">Prezzo ↑</button>
+        <button class="sort-btn" data-sort="price-desc">Prezzo ↓</button>
+        <button class="sort-btn" data-sort="newest">Recenti</button>
+    </div>
+</div>
 
 <div class="stats-bar" id="stats"></div>
 
 <div class="grid" id="deals-grid">
-    <div class="status" id="loading">
-        <div class="spinner"></div>
-        Caricamento offerte...
-    </div>
+    <div class="skeleton-card"><div class="skeleton skel-img"></div><div class="skel-body"><div class="skeleton skel-line"></div><div class="skeleton skel-line skel-line-short"></div><div class="skeleton skel-price"></div></div></div>
+    <div class="skeleton-card"><div class="skeleton skel-img"></div><div class="skel-body"><div class="skeleton skel-line"></div><div class="skeleton skel-line skel-line-short"></div><div class="skeleton skel-price"></div></div></div>
+    <div class="skeleton-card"><div class="skeleton skel-img"></div><div class="skel-body"><div class="skeleton skel-line"></div><div class="skeleton skel-line skel-line-short"></div><div class="skeleton skel-price"></div></div></div>
 </div>
 
 <footer class="footer">
     <p>Le offerte contengono link affiliati Amazon. I prezzi possono variare.</p>
-    <p style="margin-top:.3rem">Offerte Orarie &mdash; Aggiornato automaticamente ogni 10 minuti</p>
+    <p style="margin-top:.3rem">Offerte Orarie &mdash; Aggiornato ogni 10 minuti &middot; <a href="https://t.me/offerte_orarie">Canale Telegram</a></p>
 </footer>
 
 <script>
 const AFFILIATE = 'offerteorarie';
 const DATA_URL = 'offers.json';
+
+let allDeals = [];
+let currentSort = 'score';
+let searchQuery = '';
 
 function amazonUrl(productID, host) {
     return `https://www.${host || 'amazon.it'}/dp/${productID}/?tag=${AFFILIATE}-21`;
@@ -276,79 +423,111 @@ function amazonUrl(productID, host) {
 function starsHtml(rating) {
     if (!rating) return '';
     const full = Math.floor(rating);
-    const half = rating - full >= 0.5 ? 1 : 0;
-    return '<span class="stars">' + '★'.repeat(full) + (half ? '½' : '') + '</span>';
+    const half = rating - full >= 0.5 ? '½' : '';
+    return `<span class="stars">${'★'.repeat(full)}${half}</span>`;
 }
 
 function renderCard(deal) {
     const url = amazonUrl(deal.productID, deal.host);
     const priceNow = deal.price ? deal.price.toFixed(2) + '€' : '';
     const priceWas = deal.startPrice ? deal.startPrice.toFixed(2) + '€' : '';
-    const discount = deal.discount ? `-${deal.discount}%` : '';
+    const discount = deal.discount || 0;
     const score = deal.roboScore?.total || 0;
     const minimo = deal.minimoStorico || deal.roboScore?.breakdown?.minimoStorico;
 
-    let html = `<div class="card">`;
-
-    if (deal.image) {
-        html += `<a href="${url}" target="_blank"><img class="card-img" src="${deal.image}" alt="${(deal.title||'').slice(0,60)}" loading="lazy"></a>`;
-    }
+    let html = `<div class="card fade-in">`;
+    html += `<div class="card-img-wrap">`;
+    if (deal.image) html += `<a href="${url}" target="_blank" rel="noopener"><img class="card-img" src="${deal.image}" alt="" loading="lazy" width="280" height="210"></a>`;
+    html += `<div class="card-badges">`;
+    if (minimo) html += `<span class="badge badge-minimo">📉 Minimo storico</span>`;
+    if (discount > 0) html += `<span class="badge badge-discount">-${discount}%</span>`;
+    html += `</div></div>`;
 
     html += `<div class="card-body">`;
-
-    if (minimo) html += `<div class="badge-minimo">📉 Minimo storico</div>`;
-
     html += `<div class="card-title">${deal.title || deal.productID}</div>`;
     html += `<div class="card-prices">`;
     if (priceNow) html += `<span class="price-now">${priceNow}</span>`;
     if (priceWas) html += `<span class="price-was">${priceWas}</span>`;
-    if (discount) html += `<span class="discount-badge">${discount}</span>`;
     html += `</div>`;
 
     html += `<div class="card-meta">`;
-    html += `<span class="score">RoboScore: <strong>${score}</strong>/100</span>`;
+    html += `<span class="score-pill ${score >= 65 ? 'high' : ''}">${score}/100</span>`;
     if (deal.rating) html += starsHtml(deal.rating);
     html += `</div>`;
-
-    html += `</div>`; // card-body
-    html += `<a class="card-cta" href="${url}" target="_blank">🛒 Vai all'offerta</a>`;
     html += `</div>`;
-
+    html += `<a class="card-cta" href="${url}" target="_blank" rel="noopener">Vai all'offerta →</a>`;
+    html += `</div>`;
     return html;
 }
 
-async function load() {
+function getFilteredDeals() {
+    let filtered = allDeals;
+    if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        filtered = filtered.filter(d => (d.title || '').toLowerCase().includes(q) || (d.category || '').toLowerCase().includes(q));
+    }
+    const sorters = {
+        'score':      (a, b) => (b.roboScore?.total || 0) - (a.roboScore?.total || 0),
+        'discount':   (a, b) => (b.discount || 0) - (a.discount || 0),
+        'price-asc':  (a, b) => (a.price || 9999) - (b.price || 9999),
+        'price-desc': (a, b) => (b.price || 0) - (a.price || 0),
+        'newest':     (a, b) => (b.createdAt || 0) - (a.createdAt || 0),
+    };
+    filtered.sort(sorters[currentSort] || sorters.score);
+    return filtered;
+}
+
+function render() {
     const grid = document.getElementById('deals-grid');
     const stats = document.getElementById('stats');
+    const filtered = getFilteredDeals();
 
+    if (!filtered.length) {
+        grid.innerHTML = '<div class="status"><div class="status-icon">🔍</div>Nessuna offerta trovata.</div>';
+        return;
+    }
+
+    stats.innerHTML = `<span><strong>${filtered.length}</strong> offerte attive</span>`;
+    grid.innerHTML = filtered.map(renderCard).join('');
+}
+
+async function load() {
     try {
         const res = await fetch(DATA_URL + '?t=' + Date.now());
         if (!res.ok) throw new Error('Fetch failed');
         const data = await res.json();
-
-        const deals = (data.deals || [])
+        allDeals = (data.deals || [])
             .filter(d => d.roboScore?.total >= 0)
             .sort((a, b) => (b.roboScore?.total || 0) - (a.roboScore?.total || 0));
 
-        if (!deals.length) {
-            grid.innerHTML = '<div class="status">Nessuna offerta disponibile al momento. Torna tra poco!</div>';
-            return;
-        }
+        document.getElementById('header-stat').textContent = `${allDeals.length} offerte`;
 
-        stats.innerHTML = `
-            <span><strong>${deals.length}</strong> offerte attive</span>
-            <span>Aggiornato: <strong>${new Date(data.updatedAt).toLocaleString('it-IT')}</strong></span>
-        `;
-
-        grid.innerHTML = deals.map(renderCard).join('');
-
+        render();
     } catch (err) {
-        grid.innerHTML = '<div class="status">Impossibile caricare le offerte. Riprova tra poco.</div>';
+        document.getElementById('deals-grid').innerHTML = `
+            <div class="status">
+                <div class="status-icon">⚠️</div>
+                Impossibile caricare le offerte.
+                <br><button class="retry-btn" onclick="load()">Riprova</button>
+            </div>`;
     }
 }
 
+document.getElementById('search').addEventListener('input', e => {
+    searchQuery = e.target.value;
+    render();
+});
+
+document.querySelector('.sort-row').addEventListener('click', e => {
+    const btn = e.target.closest('.sort-btn');
+    if (!btn) return;
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSort = btn.dataset.sort;
+    render();
+});
+
 load();
-// Refresh automatico ogni 5 minuti
 setInterval(load, 5 * 60 * 1000);
 </script>
 
